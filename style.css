@@ -1,0 +1,100 @@
+/* Reset & Basic Variables */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+:root { --primary-color: #073805; --secondary-color: #3c9b1f; --bg-color: #f4f6f8; --text-color: #333; --white: #ffffff; }
+body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+
+/* Navbar & Logo */
+.navbar { display: flex; justify-content: space-between; align-items: center; background-color: var(--primary-color); padding: 15px 30px; color: var(--white); position: sticky; top: 0; z-index: 1000; }
+.logo-container { display: flex; align-items: center; gap: 12px; }
+.logo-img { width: 45px; height: 45px; object-fit: contain; background-color: white; padding: 2px; border-radius: 50%; }
+.logo-text { font-size: 20px; font-weight: bold; color: var(--white); }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links li a { color: var(--white); text-decoration: none; font-weight: 500; transition: 0.3s; }
+.nav-links li a:hover { color: #e0f2f1; }
+.menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+
+/* Sections & Pages */
+.page { display: none; min-height: 80vh; }
+.page.active { display: block; animation: fadeIn 0.5s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.section-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.section-container h2 { text-align: center; margin-bottom: 30px; color: var(--secondary-color); }
+.hero { background: linear-gradient(rgba(49, 80, 43, 0.8), rgba(13, 97, 10, 0.8)), url('arsip/bangunan.jpg') center/cover; color: var(--white); text-align: center; padding: 100px 20px; }
+.hero h1 { font-size: 36px; margin-bottom: 10px; }
+.hero p { font-size: 18px; }
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-danger, .btn-warning { display: inline-block; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; text-decoration: none; text-align: center; transition: 0.3s; }
+.btn-primary { background-color: var(--primary-color); color: var(--white); }
+.btn-primary:hover { background-color: var(--secondary-color); }
+.btn-secondary { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); display: block; width: fit-content; margin: 20px auto; }
+.btn-secondary:hover { background-color: var(--primary-color); color: var(--white); }
+.btn-danger { background-color: #e53935; color: var(--white); }
+.btn-danger:hover { background-color: #b71c1c; }
+.btn-warning { background-color: #ffb300; color: #333; }
+.btn-warning:hover { background-color: #ffa000; }
+
+/* Berita & 16:9 Image Aspect Ratio */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.news-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+.news-card:hover { transform: translateY(-5px); }
+
+/* GAMBAR BERITA 16:9 */
+.news-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.full-news-img { width: 100%; max-height: 500px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+.news-content { padding: 15px; }
+.news-content h3 { font-size: 18px; margin-bottom: 10px; color: var(--secondary-color); }
+.news-content p { font-size: 14px; color: #666; margin-bottom: 10px; }
+
+/* Admin News List */
+.admin-news-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; }
+.admin-news-item strong { color: var(--secondary-color); font-size: 16px;}
+.admin-news-actions button { padding: 6px 12px; font-size: 14px; margin-left: 5px; }
+
+/* Modal Edit */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+.modal-content { background-color: #fff; margin: 5% auto; padding: 25px; border-radius: 10px; width: 90%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close-modal:hover { color: #333; }
+
+/* Forms & Boxes */
+.content-box { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); white-space: pre-wrap; }
+.registration-section { background: var(--white); padding: 40px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.center-content { display: flex; justify-content: center; align-items: center; }
+.login-box { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+input[type="text"], input[type="password"], input[type="url"], input[type="file"], textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+
+/* Admin Grid */
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.admin-card { background: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.error-msg { color: red; margin-top: 10px; font-size: 14px; }
+
+/* Scroller Prestasi & Organisasi */
+.prestasi-scroller { display: flex; overflow-x: auto; gap: 20px; padding: 10px 5px 25px 5px; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+.prestasi-scroller::-webkit-scrollbar { height: 8px; }
+.prestasi-scroller::-webkit-scrollbar-track { background: #e0e0e0; border-radius: 4px; }
+.prestasi-scroller::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+.prestasi-card { min-width: 280px; max-width: 300px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); padding: 30px 20px; border-radius: 12px; text-align: center; scroll-snap-align: start; flex-shrink: 0; transition: transform 0.3s; }
+.prestasi-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.25); }
+.prestasi-card i { font-size: 45px; margin-bottom: 15px; color: #ffd700; }
+.org-chart { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 20px 0; }
+.org-card { background: var(--white); width: 250px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); text-align: center; padding: 30px 20px; transition: all 0.3s ease; border-bottom: 5px solid var(--primary-color); }
+.org-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.org-avatar { width: 80px; height: 80px; background-color: #e0f2f1; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 15px auto; font-size: 35px; color: var(--primary-color); border: 3px solid var(--primary-color); transition: all 0.3s ease; }
+.org-card:hover .org-avatar { background-color: var(--primary-color); color: var(--white); }
+.org-role { font-size: 13px; color: var(--secondary-color); text-transform: uppercase; font-weight: 800; margin-bottom: 8px; }
+.org-name { font-size: 18px; font-weight: bold; color: var(--text-color); }
+.org-chart .org-card:first-child { width: 100%; max-width: 320px; border-bottom: 5px solid #ffb300; margin-bottom: 20px; }
+.org-chart .org-card:first-child .org-avatar { border-color: #ffb300; color: #ffb300; width: 100px; height: 100px; font-size: 45px; }
+
+/* Footer */
+footer { background-color: var(--secondary-color); color: var(--white); text-align: center; padding: 20px; margin-top: 40px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; width: 100%; background-color: var(--primary-color); position: absolute; top: 60px; left: 0; padding: 20px 0; text-align: center; }
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: block; }
+    .admin-news-item { flex-direction: column; align-items: flex-start; gap: 10px;}
+}

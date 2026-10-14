@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI Al Urwatul Wutsqo 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Script Resmi Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="arsip/1111.jpg" alt="Logo MI" class="logo-img">
+            <span class="logo-text">MI Al Urwatul Wutsqo 1</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#" onclick="showPage('home')">Beranda</a></li>
+            <li><a href="#" onclick="showPage('pendidik')">Pendidik & Staf</a></li>
+            <li><a href="#" onclick="showPage('berita-page')">Berita</a></li>
+            <li><a href="#" onclick="showPage('admin-login')"><i class="fas fa-lock"></i> Admin</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Halaman Utama (Beranda) -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <h1>Selamat Datang di MI Al Urwatul Wutsqo 1</h1>
+            <p>Membentuk generasi cerdas, berakhlak mulia, dan berwawasan luas.</p>
+        </div>
+
+        <div class="section-container">
+            <h2>Biografi Madrasah</h2>
+            <div class="content-box" id="beranda-biografi-content">
+                <p>Memuat informasi biografi...</p>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h2>Prestasi Membanggakan</h2>
+            <div class="prestasi-scroller" id="beranda-prestasi-container"></div>
+        </div>
+
+        <div class="section-container">
+            <h2>Berita & Artikel Terbaru</h2>
+            <div class="news-grid" id="beranda-news-container"></div>
+            <button class="btn-secondary" onclick="showPage('berita-page')">Lihat Semua Berita</button>
+        </div>
+
+        <div class="section-container registration-section">
+            <h2>Pendaftaran Peserta Didik Baru</h2>
+            <p>Bergabunglah bersama kami untuk masa depan yang lebih cerah.</p>
+            <a href="#" id="link-pendaftaran-publik" target="_blank" class="btn-primary">Daftar Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Halaman Struktur Pendidik -->
+    <section id="pendidik" class="page section-container">
+        <h2>Struktur Organisasi Pendidik & Staf</h2>
+        <div class="org-chart" id="pendidik-content"></div>
+    </section>
+
+    <!-- Halaman Daftar Semua Berita -->
+    <section id="berita-page" class="page section-container">
+        <h2>Kumpulan Berita & Artikel</h2>
+        <div class="news-grid" id="full-news-container"></div>
+    </section>
+
+    <!-- Halaman Baca Berita Penuh (Detail Berita) -->
+    <section id="baca-berita-page" class="page section-container">
+        <button class="btn-secondary" onclick="showPage('berita-page')" style="margin: 0 0 20px 0;"><i class="fas fa-arrow-left"></i> Kembali</button>
+        <div class="content-box">
+            <h2 id="detail-judul" style="text-align: left; color: var(--secondary-color); margin-bottom: 5px;">Judul Berita</h2>
+            <small id="detail-tanggal" style="color: #888; display: block; margin-bottom: 20px;"><i class="far fa-calendar-alt"></i> Tanggal</small>
+            <img id="detail-gambar" src="" alt="Gambar Berita" class="full-news-img">
+            <div id="detail-isi" style="white-space: pre-wrap; line-height: 1.8; margin-top: 20px; text-align: justify;">Isi berita...</div>
+        </div>
+    </section>
+
+    <!-- Halaman Login Admin -->
+    <section id="admin-login" class="page section-container center-content">
+        <div class="login-box">
+            <h2>Login Admin</h2>
+            <input type="password" id="admin-password" placeholder="Masukkan PIN/Password">
+            <button onclick="loginAdmin()" class="btn-primary">Masuk</button>
+            <p id="login-error" class="error-msg"></p>
+        </div>
+    </section>
+
+    <!-- Halaman Dashboard Admin -->
+    <section id="admin-dashboard" class="page section-container">
+        <h2>Dashboard Admin</h2>
+        <button onclick="logoutAdmin()" class="btn-danger" style="margin-bottom: 20px;">Logout</button>
+        
+        <div class="admin-grid">
+            <div class="admin-card">
+                <h3>Edit Biografi</h3>
+                <textarea id="edit-biografi" rows="5"></textarea>
+                <button onclick="saveBiografi()" class="btn-primary">Simpan Biografi</button>
+            </div>
+
+            <div class="admin-card">
+                <h3>Edit Pendidik & Staf</h3>
+                <textarea id="edit-pendidik" rows="5" placeholder="Format wajib -> Jabatan : Nama"></textarea>
+                <button onclick="savePendidik()" class="btn-primary">Simpan Pendidik</button>
+            </div>
+
+            <div class="admin-card">
+                <h3>Edit Prestasi</h3>
+                <textarea id="edit-prestasi" rows="5" placeholder="Gunakan Enter untuk memisahkan setiap prestasi."></textarea>
+                <button onclick="savePrestasi()" class="btn-primary">Simpan Prestasi</button>
+            </div>
+
+            <div class="admin-card">
+                <h3>Edit Link Pendaftaran</h3>
+                <input type="url" id="edit-link-pendaftaran" placeholder="https://forms.gle/...">
+                <button onclick="saveLink()" class="btn-primary">Simpan Link</button>
+            </div>
+
+            <div class="admin-card" style="grid-column: 1 / -1;">
+                <h3>Tambah Berita / Artikel Baru</h3>
+                <input type="text" id="berita-judul" placeholder="Judul Berita">
+                <label style="display:block; margin:10px 0 5px; font-weight:bold;">Upload Gambar (Format 16:9 akan lebih bagus):</label>
+                <input type="file" id="berita-gambar" accept="image/*" style="margin-bottom: 10px;">
+                <textarea id="berita-isi" rows="5" placeholder="Isi Berita/Artikel"></textarea>
+                <button onclick="tambahBerita()" class="btn-primary">Upload & Simpan Berita</button>
+                <p id="upload-status" style="margin-top: 10px; font-size: 14px; color: #007bff;"></p>
+            </div>
+
+            <!-- List Kelola Berita untuk Edit & Hapus -->
+            <div class="admin-card" style="grid-column: 1 / -1;">
+                <h3>Kelola Berita (Edit & Hapus)</h3>
+                <div id="admin-news-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Edit Berita (Pop Up) -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="tutupEdit()">&times;</span>
+            <h3 style="margin-bottom: 15px;">Edit Berita</h3>
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-judul" placeholder="Judul Berita">
+            
+            <label style="display:block; margin: 10px 0 5px; font-size:14px; color:#555;">Ganti Gambar (Opsional, biarkan kosong jika tidak ingin diganti):</label>
+            <input type="file" id="edit-gambar" accept="image/*" style="margin-bottom: 10px;">
+            
+            <textarea id="edit-isi" rows="8" placeholder="Isi Berita/Artikel"></textarea>
+            <button class="btn-primary" onclick="simpanEditBerita()">Simpan Perubahan</button>
+            <p id="edit-status" style="margin-top: 10px; font-size: 14px; color: #007bff;"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MI Al Urwatul Wutsqo 1. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script src="script.js"></script>
+</body>
+</html>
